@@ -20,7 +20,7 @@ namespace EliteAspectsChanges
 	[BepInDependency("com.bepis.r2api")]
 	[R2APISubmoduleDependency("LanguageAPI", "BuffAPI")]
 	[BepInDependency("com.Skell.AspectsToItems")]
-	[BepInPlugin("com.Skell.EliteAspectsChanges", "Elite Aspects Changes", "2.0.0")]
+	[BepInPlugin("com.Skell.EliteAspectsChanges", "Elite Aspects Changes", "2.0.1")]
 	public class EliteAspectsChanges : BaseUnityPlugin
 	{
 		public void Awake()
