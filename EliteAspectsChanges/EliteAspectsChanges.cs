@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using BepInEx;
 using RoR2;
-using EnigmaticThunder;
+using R2API;
+using R2API.Utils;
 using AspectsToItems;
 using UnityEngine;
 using Mono.Cecil.Cil;
@@ -16,7 +17,8 @@ using System.Security.Permissions;
 
 namespace EliteAspectsChanges
 {
-	[BepInDependency("com.EnigmaDev.EnigmaticThunder")]
+	[BepInDependency("com.bepis.r2api")]
+	[R2APISubmoduleDependency("LanguageAPI", "BuffAPI")]
 	[BepInDependency("com.Skell.AspectsToItems")]
 	[BepInPlugin("com.Skell.EliteAspectsChanges", "Elite Aspects Changes", "2.0.0")]
 	public class EliteAspectsChanges : BaseUnityPlugin
@@ -40,7 +42,8 @@ namespace EliteAspectsChanges
 				FreezingBlood.buffColor = new Color(0.64705884f, 0.87058824f, 0.92941177f);
 				FreezingBlood.canStack = true;
 				FreezingBlood.isDebuff = true;
-				EnigmaticThunder.Modules.Buffs.RegisterBuff(FreezingBlood);
+				CustomBuff FreezingBloodC = new CustomBuff(FreezingBlood);
+				BuffAPI.Add(FreezingBloodC);
 			}
 
 			Hook();
@@ -372,7 +375,7 @@ namespace EliteAspectsChanges
 		{
 			"N'kuhana's Retort",
 			"Become an aspect of corruption.",
-			"On hit, <style=cIsUtility>block</style> the target's healing for <style=cIsUtility>8</style> seconds, and <style=cIsHealing>heal</style> for <style=cIsHealing>10%</style> <style=cStack>(+5% per stack)</style> <style=cIsDamge>damage dealt</style>.",
+			"On hit, <style=cIsUtility>block</style> the target's healing for <style=cIsUtility>8</style> seconds, and <style=cIsHealing>heal</style> for <style=cIsHealing>10%</style> <style=cStack>(+5% per stack)</style> <style=cIsDamage>damage dealt</style>.",
 			""
 		};
 		private static string[] AffixHauntedTokens =
